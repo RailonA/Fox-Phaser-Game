@@ -1,10 +1,8 @@
 import Phaser from 'phaser';
-import logoImg from '../assets/logo.png';
-
-import config from './config';
+import config from './config/config';
 import PreloaderScene from './Scenes/PreloaderScene';
 import TitleScene from './Scenes/TitleScene';
-import Model from './Model';
+import Model from './model';
 
 /* eslint no-undef: "error" */
 /* eslint import/no-unresolved: "error" */
