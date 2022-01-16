@@ -1,13 +1,14 @@
 import Phaser from 'phaser';
-
 import config from '../config/config';
-import gameScene from '../scenes/gameScene';
-import bootScene from '../scenes/bootScene';
-import preloaderScene from '../scenes/preloaderScene';
-import titleScene from '../scenes/titleScene';
-import optionsScene from '../scenes/optionsScene';
-import gameOverScene from '../scenes/gameOverScene';
+import BootScene from '../Scenes/BootScene';
+import PreloaderScene from '../Scenes/PreloaderScene';
+import TitleScene from '../Scenes/TitleScene';
 import Model from '../model';
+
+/* eslint no-undef: "error" */
+/* eslint import/no-unresolved: "error" */
+
+/* eslint no-unused-vars: 2 */
 
 class Game extends Phaser.Game {
   constructor() {
@@ -15,14 +16,12 @@ class Game extends Phaser.Game {
     const model = new Model();
 
     this.globals = { model, bgMusic: null };
-    this.scene.add('Boot', bootScene);
-    this.scene.add('Preloader', preloaderScene);
-    this.scene.add('Title', titleScene);
-    this.scene.add('Options', optionsScene);
-    this.scene.add('Game', gameScene);
-    this.scene.add('GameOver', gameOverScene);
+    this.scene.add('Boot', BootScene);
+    this.scene.add('Preloader', PreloaderScene);
+    this.scene.add('Title', TitleScene);
     this.scene.start('Boot');
   }
-}
+};
 
+// let game;
 window.game = new Game();

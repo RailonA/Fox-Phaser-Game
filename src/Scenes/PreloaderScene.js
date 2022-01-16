@@ -1,10 +1,8 @@
 import Phaser from 'phaser';
 
-/* eslint no-undef: "error" */
-
-const PreloaderScene = class extends Phaser.Scene {
+export default class PreloaderScene extends Phaser.Scene {
   constructor() {
-    super({ key: 'Preloader' });
+    super('Preloader');
   }
 
   init() {
@@ -14,28 +12,28 @@ const PreloaderScene = class extends Phaser.Scene {
   preload() {
     const progressBar = this.add.graphics();
     const progressBox = this.add.graphics();
-    progressBox.fillStyle((54, 106, 191), 0.5);
+    progressBox.fillStyle(0x222222, 0.8);
     progressBox.fillRect(240, 270, 320, 50);
 
     const { width } = this.cameras.main;
     const { height } = this.cameras.main;
     const loadingText = this.make.text({
       x: width / 2,
-      y: (height / 2) - 50,
-      text: 'Loading Game...',
+      y: height / 2 - 50,
+      text: 'Loading...',
       style: {
-        font: '2em san-serif',
-        fill: '#87101a',
+        font: '20px monospace',
+        fill: '#ffffff',
       },
     });
-    loadingText.setOrigin(2.9, 1);
+    loadingText.setOrigin(0.5, 0.5);
 
     const percentText = this.make.text({
       x: width / 2,
-      y: (height / 2) - 5,
+      y: height / 2 - 5,
       text: '0%',
       style: {
-        font: '1.8em sans-serif',
+        font: '18px monospace',
         fill: '#ffffff',
       },
     });
@@ -43,16 +41,15 @@ const PreloaderScene = class extends Phaser.Scene {
 
     const assetText = this.make.text({
       x: width / 2,
-      y: (height / 2) + 50,
+      y: height / 2 + 50,
       text: '',
       style: {
-        font: '1.8em sans-serif',
+        font: '18px monospace',
         fill: '#ffffff',
       },
     });
     assetText.setOrigin(0.5, 0.5);
 
-    // update progress bar
     this.load.on('progress', (value) => {
       percentText.setText(`${parseInt(value * 100, 10)}%`);
       progressBar.clear();
@@ -60,12 +57,10 @@ const PreloaderScene = class extends Phaser.Scene {
       progressBar.fillRect(250, 280, 300 * value, 30);
     });
 
-    // update file progress text
     this.load.on('fileprogress', (file) => {
       assetText.setText(`Loading asset: ${file.key}`);
     });
 
-    // remove progress bar when complete
     this.load.on('complete', () => {
       progressBar.destroy();
       progressBox.destroy();
@@ -75,14 +70,9 @@ const PreloaderScene = class extends Phaser.Scene {
       this.ready();
     });
 
-    this.timedEvent = this.time.delayedCall(4000, this.ready, [], this);
+    this.timedEvent = this.time.delayedCall(3000, this.ready, [], this);
 
-    // this.load.image('Button1', 'assets/gh.png');
-    // this.load.image('Button2', 'assets/action.gif');
-
-    // this.load.audio('bgMusic', ['assets/battleMus.mp3']);
-    // this.load.audio('scream', ['assets/osn2u.mp3']);
-    // this.load.audio('shoot', ['assets/laser1.wav']);
+    this.load.image('bg-1', './dist/assets/Background/blueBackground.png');
   }
 
   ready() {
@@ -92,6 +82,4 @@ const PreloaderScene = class extends Phaser.Scene {
       this.scene.start('Title');
     }
   }
-};
-
-export default PreloaderScene;
+}
