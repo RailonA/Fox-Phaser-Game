@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import config from '../config/config';
+import Button from '../Objects/button';
 
 export default class TitleScene extends Phaser.Scene {
   constructor() {
@@ -15,8 +16,11 @@ export default class TitleScene extends Phaser.Scene {
     image.setScale(scale).setScrollFactor(1);
 
     this.model = this.sys.game.globals.model;
-
-    this.model = this.sys.game.globals.model;
+    
+    this.gameButton = new Button(this, config.width / 2, config.height / 2 - 100, 'greyButton', 'greyButton', 'Play', 'Guide');
+    this.optionsButton = new Button(this, config.width / 2, config.height / 2, 'greyButton', 'greyButton', 'Options', 'Options');
+    this.creditsButton = new Button(this, config.width / 2, config.height / 2 + 100, 'greyButton', 'greyButton', 'Credits', 'Credits');
+    this.scoreButton = new Button(this, config.width / 2, config.height / 2 + 200, 'greyButton', 'greyButton', 'Score', 'DisplayScore');
 
   }
 
