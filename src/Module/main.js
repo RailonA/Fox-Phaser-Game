@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import config from '../config/config';
+import GameScene from '../Scenes/GameScene';
 import BootScene from '../Scenes/BootScene';
 import GuideScene from '../Scenes/GuideScene';
 import OptionsScene from '../Scenes/OptionsScene';
@@ -24,6 +25,7 @@ class Game extends Phaser.Game {
     this.scene.add('Title', TitleScene);
     this.scene.add('Options', OptionsScene);
     this.scene.add('Credits', CreditsScene);
+    this.scene.add('Game', GameScene);
     this.scene.add('Guide', GuideScene);
     this.scene.start('Boot');
   }

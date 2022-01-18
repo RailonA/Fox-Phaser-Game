@@ -35,7 +35,7 @@ export default class GuideScene extends Phaser.Scene {
       fontFamily: 'open-sans',
     });
 
-    this.gameTitle = this.add.text((config.width / 2) - 600, config.height / 2, 'When '
+    this.gameTitle = this.add.text((config.width / 2) - 300, config.height / 2, 'When '
       + 'the game starts, the enemy starts attacking .'
       + '\n For the player to survive, they needs to kill as many'
       + '\n enemies as possible. The score keeps increasing for every kill'

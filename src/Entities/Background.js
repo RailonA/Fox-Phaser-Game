@@ -12,7 +12,13 @@ const Background = class {
   }
 
   preload() {
-    this.load.image('bg-1', './assets/Background/blueBackground.png');
+    // this.load.image('bg-1', './assets/Background/blueBackground.png');
+  // map tiles
+  this.load.image('tiles', 'assets/map/spritesheet.png');
+          
+  // map in json format
+  this.load.tilemapTiledJSON('map', 'assets/map.json');
+  
   }
 
   createLayers() {
